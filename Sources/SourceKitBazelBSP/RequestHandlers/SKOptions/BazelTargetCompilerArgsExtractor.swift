@@ -457,7 +457,7 @@ extension BazelTargetCompilerArgsExtractor {
     }
 }
 
-private extension String {
+extension String {
     /// Strips the Bazel settings transition hash suffix from a configuration mnemonic.
     ///
     /// Bazel appends a `-ST-<hex>` suffix to configuration mnemonics to distinguish builds
@@ -466,7 +466,7 @@ private extension String {
     /// for a given set of settings but differs across top-level targets.
     ///
     /// See: https://bazel.build/extending/config#user-defined-transitions
-    var strippingSettingsTransitionHash: String {
+    fileprivate var strippingSettingsTransitionHash: String {
         self.replacingOccurrences(of: #"-ST-[a-f0-9]+$"#, with: "", options: .regularExpression)
     }
 }
